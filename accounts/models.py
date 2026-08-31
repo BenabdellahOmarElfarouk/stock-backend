@@ -15,6 +15,12 @@ class Organisation(models.Model):
     ai = models.CharField("Article d'imposition", max_length=60, blank=True)
     invoice_prefix = models.CharField("Préfixe facture", max_length=10, default="FAC")
     invoice_counter = models.PositiveIntegerField(default=0)
+    locale = models.CharField(
+        "Langue",
+        max_length=8,
+        choices=[("fr", "Français"), ("ar", "العربية")],
+        default="fr",
+    )
     is_active = models.BooleanField("Accès actif", default=True)
     created_at = models.DateTimeField(auto_now_add=True)
 

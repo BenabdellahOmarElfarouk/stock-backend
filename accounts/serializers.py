@@ -23,6 +23,7 @@ class OrganisationSerializer(serializers.ModelSerializer):
             "nis",
             "ai",
             "invoice_prefix",
+            "locale",
             "is_active",
             "created_at",
         )
