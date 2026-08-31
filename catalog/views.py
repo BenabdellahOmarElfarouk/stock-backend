@@ -41,13 +41,11 @@ class UnitViewSet(OrganisationScopedMixin, viewsets.ModelViewSet):
     queryset = Unit.objects.all()
     serializer_class = UnitSerializer
     search_fields = ("name", "symbol")
-    pagination_class = None
 
 
 class TaxRateViewSet(OrganisationScopedMixin, viewsets.ModelViewSet):
     queryset = TaxRate.objects.all()
     serializer_class = TaxRateSerializer
-    pagination_class = None
 
 
 class PaymentMethodViewSet(OrganisationScopedMixin, viewsets.ModelViewSet):

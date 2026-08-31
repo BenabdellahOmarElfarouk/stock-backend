@@ -23,7 +23,7 @@ class StockViewSet(viewsets.ReadOnlyModelViewSet):
         )
         if self.request.query_params.get("low") == "1":
             qs = qs.filter(quantity__lte=F("article__min_stock"))
-        return qs
+        return qs.order_by("article__name", "store__name")
 
     @action(detail=False, methods=["post"])
     def adjust(self, request):

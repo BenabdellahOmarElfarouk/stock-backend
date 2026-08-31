@@ -59,7 +59,6 @@ class PlatformOrganisationViewSet(viewsets.ModelViewSet):
     serializer_class = PlatformOrganisationSerializer
     queryset = Organisation.objects.all().prefetch_related("users")
     search_fields = ("name", "trade_name", "city")
-    pagination_class = None
 
     def create(self, request, *args, **kwargs):
         serializer = RegisterSerializer(data=request.data)
@@ -108,7 +107,7 @@ class UserViewSet(viewsets.ModelViewSet):
         org = self.request.user.organisation
         if org is None:
             return User.objects.none()
-        return User.objects.filter(organisation=org).select_related("store")
+        return User.objects.filter(organisation=org).select_related("store").order_by("username")
 
     def get_serializer_class(self):
         if self.action in ("create", "update", "partial_update"):
